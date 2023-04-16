@@ -2,7 +2,7 @@ package Factory;
 
 import java.util.ArrayList;
 
-public class Fabbrica {
+public class Fabbrica extends Thread{
     static BancoDaLavoro[] banchi = new BancoDaLavoro[3];
     ArrayList<Veicolo> veicli = new ArrayList<>();
 
@@ -23,6 +23,17 @@ public class Fabbrica {
         return true;
     }
 
-
+    @Override
+    public void run() {
+        while(true){
+            creaVeicolo();
+            for (int i = 0; i < banchi.length; i++) {
+                for (int j = 0; j < banchi.length; j++) {
+                    //controllo da fare
+                }
+    
+            }
+        }
+    }
     
 }

@@ -7,6 +7,8 @@ public class BancoDaLavoro extends Semaphore{
     //
     ArrayList<ComponenteCreato> componenti = new ArrayList<>();
     ArrayList<Lavoratore> lavoratori = new ArrayList<>();
+    ArrayList<Lavoratore> coda = new ArrayList<>();
+    ArrayList<Integer> cbt = new ArrayList<>();
 
     public BancoDaLavoro(int quantitaLavoratori, int tipologiaBanco) {
         super(quantitaLavoratori);
@@ -19,9 +21,16 @@ public class BancoDaLavoro extends Semaphore{
         Lavoratore l = new Lavoratore(tipologiaBanco);
         lavoratori.add(l);
         l.run();
-        }
-        else {
+        cbt.add(lavoratori.indexOf(l), l.numeroLavoratore);
+        
+        }else {
             System.out.println("UwU hai messo twoppi schiavi");
+            Lavoratore l = new Lavoratore(tipologiaBanco);
+            coda.add(l);
         }
+    }
+
+    public void stopImmigrati(){
+
     }
 }

@@ -2,10 +2,11 @@ package Factory;
 public class Lavoratore extends Thread{
     int tempoDiLavoro;
     int bancoDiAppartenenza;
-    protected static int numeroLavoratore;
+    public static Integer numeroLavoratore;
     //tempo
     int min = 2000;
     int max = 10000;
+    boolean stipendio = false;
 
     public int getTempoDiLavoro() {
         return tempoDiLavoro;
@@ -22,7 +23,7 @@ public class Lavoratore extends Thread{
         this.tempoDiLavoro = (int) Math.floor(Math.random() *(max - min + 1) + min) ;
         this.bancoDiAppartenenza = bancoDiAppartenenza;
         numeroLavoratore++;
-    }
+    }   
 
     @Override
     public void run() {
@@ -30,6 +31,7 @@ public class Lavoratore extends Thread{
         try {
             sleep(tempoDiLavoro);
             finischiLavoro();
+            stipendio = true;
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -40,5 +42,7 @@ public class Lavoratore extends Thread{
         ComponenteCreato cock = new ComponenteCreato(bancoDiAppartenenza);
         Fabbrica.banchi[bancoDiAppartenenza].componenti.add(cock);
     }
+
+    
 
 }
